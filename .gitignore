@@ -1,0 +1,57 @@
+# Maven
+target/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+.flattened-pom.xml
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.sublime-project
+*.sublime-workspace
+.classpath
+.project
+.settings/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Output
+output/
+output_*.txt
+extracted_*.txt
+
+# Temp files
+temp/
+tmp/
+*.tmp
+
+# Node (if needed)
+node_modules/
+npm-debug.log
+
+# Python (if needed)
+__pycache__/
+*.py[cod]
+*$py.class
+
