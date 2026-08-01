@@ -1,4 +1,5 @@
-﻿package com.ocr;
+package com.ocr;
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.PDFRenderer;
 import org.slf4j.Logger;
@@ -44,7 +45,7 @@ public class OCRProcessor {
         }
         StringBuilder allText = new StringBuilder();
         File tempDir = null;
-        try (PDDocument document = PDDocument.load(new File(pdfFilePath))) {
+        try (PDDocument document = Loader.loadPDF(new File(pdfFilePath))) {
             int pages = document.getNumberOfPages();
             logger.info("Processing PDF: {} (Total pages: {})", pdfFilePath, pages);
             tempDir = Files.createTempDirectory("ocr_").toFile();
@@ -98,7 +99,7 @@ public class OCRProcessor {
     private ProcessingResult processSingleFile(File pdfFile, String outputDirectory) {
         ProcessingResult result = new ProcessingResult(pdfFile.getName());
         try {
-            String outputFileName = pdfFile.getName().replaceAll("\.pdf$", "") + "_extracted.txt";
+            String outputFileName = pdfFile.getName().replaceAll("\\.pdf$", "") + "_extracted.txt";
             String outputPath = Paths.get(outputDirectory, outputFileName).toString();
             long startTime = System.currentTimeMillis();
             String extractedText = processPDF(pdfFile.getAbsolutePath(), outputPath);
